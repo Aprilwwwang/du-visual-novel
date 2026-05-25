@@ -1,15 +1,17 @@
 /**
- * 《你是我藏在教案下的一场大雨》 — Galgame Complete Script
- * 4 routes · 15+ choices · 8 endings · EX bonus scenes
+ * 《你是我藏在教案下的一场大雨》 — Galgame 剧本
+ * 严格依据剧本结构文档 v1.0
+ * 4条路线 · 15个选择点 · 5种结局 + EX场景
  */
 
 const STORY_SCRIPT = [
 
   // ============================================================
-  // 第一幕  序幕  ——「被看见的代价」
+  // 第一幕  序幕 ——「被看见的代价」
+  // Scene 01-03
   // ============================================================
 
-  // --- Scene 01: 论坛炸了 ---
+  // --- Scene 01: 序幕·论坛炸了 ---
   { type: 'label', name: 'scene_01' },
   { type: 'bg', value: 'classroom' },
   { type: 'narration', text: '全市的论坛每隔一阵子就会炸一次。这次炸得格外彻底。' },
@@ -24,7 +26,7 @@ const STORY_SCRIPT = [
   { type: 'narration', text: '论坛上的照片，我已经看到了。那个烟灰色的尘袋。那截小腿上的旧疤。那是我的。' },
   { type: 'thought', speaker: '沈临渡', text: '但我没有反应。我早就学会了。' },
 
-  // --- Scene 02: 陆砚登场 ---
+  // --- Scene 02: 陆砚 ---
   { type: 'transition', effect: 'fade' },
   { type: 'char_hide_all' },
   { type: 'char_show', pos: 'right', name: 'lu', mood: 'neutral' },
@@ -58,9 +60,12 @@ const STORY_SCRIPT = [
   // ============ CHOICE C01 ============
   { type: 'label', name: 'choice_c01' },
   { type: 'choice', choices: [
-    { text: '沉默。让这句话自己散掉。', jump: 'c01_silent', flag: 'self_awareness', value: 0 },
-    { text: '"人生不是算术题，不是非对即错。回去吧。"', jump: 'c01_answer', flag: 'self_awareness', value: 2 },
-    { text: '"你自己觉得呢？"（把问题扔回给他）', jump: 'c01_throwback', flag: 'self_awareness', value: 1 }
+    { text: '沉默。让这句话自己散掉。', jump: 'c01_silent',
+      flag: 'self_awareness', value_add: 0 },
+    { text: '"人生不是算术题，不是非对即错。回去吧。"', jump: 'c01_answer',
+      flag: 'self_awareness', value_add: 2 },
+    { text: '"你自己觉得呢？"（把问题扔回给他）', jump: 'c01_throwback',
+      flag: 'self_awareness', value_add: 1 }
   ] },
 
   { type: 'label', name: 'c01_silent' },
@@ -72,20 +77,19 @@ const STORY_SCRIPT = [
   { type: 'label', name: 'c01_answer' },
   { type: 'dialogue', speaker: '陆砚', text: '"人生不是算术题，不是非对即错。回去上课。"' },
   { type: 'narration', text: '他说完就走了。脚步不快不慢，皮鞋踩在水泥地上，一下一下，很稳。' },
-  { type: 'thought', speaker: '沈临渡', text: '他给了我一个答案。一个老师的标准答案。但我总觉得——他走得太快了。像是怕我再问下去。' },
   { type: 'jump', label: 'end_scene_03' },
 
   { type: 'label', name: 'c01_throwback' },
   { type: 'dialogue', speaker: '陆砚', text: '"你自己觉得呢？"' },
   { type: 'narration', text: '他转过身来看我。那双眼睛很安静，没有标准答案，没有说教。他真的在等我想。' },
-  { type: 'thought', speaker: '沈临渡', text: '他没有给我答案。他把问题扔回来了。但不知道为什么——被认真地问一次"你觉得呢"，比被给一百个答案都管用。' },
   { type: 'jump', label: 'end_scene_03' },
 
   { type: 'label', name: 'end_scene_03' },
   { type: 'char_hide_all' },
 
   // ============================================================
-  // 第二幕  分叉  ——「笔记本、名片、选择题」
+  // 第二幕  分叉 ——「笔记本、名片、选择题」
+  // Scene 04, 05-K, 05-X
   // ============================================================
 
   // --- Scene 04: 发卷子 ---
@@ -96,18 +100,22 @@ const STORY_SCRIPT = [
   { type: 'narration', text: '下课。数学卷子发下来了。我——沈临渡——考了19分。' },
   { type: 'thought', speaker: '沈临渡', text: '我知道自己最后一道大题没写完。倒数第二道也没写完。但有一道题的思路是对的——那个解法，比标准答案还短一半。老师没看出来。不重要了。' },
   { type: 'narration', text: '下课铃响了。裴听站起来收拾书包，经过我座位的时候，脚步放慢了一秒。她没看我，只是不动声色地把一本笔记推到我桌角。那个夹子夹得很紧，像是怕掉了，又像是怕被人发现。' },
-  { type: 'thought', speaker: '沈临渡', text: '我翻开第一页。是数学笔记。每道题都写了两种解法。用黑笔和红笔。她连我上次说的那种"偏门方法"都整理进去了。我认得那个字。这几个星期，我的抽屉里经常多出一本笔记。从来没留过名字。' },
+  { type: 'thought', speaker: '沈临渡', text: '我认得那个笔记本。这几个星期，我的抽屉里经常多出一本笔记。从来没留过名字。' },
 
   // ============ CHOICE C02 — ROUTE FORK ============
   { type: 'label', name: 'choice_c02' },
   { type: 'choice', choices: [
-    { text: '翻开笔记本，仔细看她的解题思路。', jump: 'route_k_start', flag: 'route', value: 'pei_ting' },
-    { text: '放进抽屉，没有翻开。趴在桌上睡了。', jump: 'route_a_start', flag: 'route', value: 'lu_yan' },
-    { text: '拿着笔记走到第二排，还给裴苑——上次她的咖啡洒在我桌上。', jump: 'route_x_start', flag: 'route', value: 'pei_yuan' }
+    { text: '翻开笔记本，仔细看她的解题思路。',
+      jump: 'route_k_start', flag: 'route', value: 'pei_ting' },
+    { text: '放进抽屉，没有翻开。趴在桌上睡了。',
+      jump: 'route_a_start', flag: 'route', value: 'lu_yan' },
+    { text: '拿着笔记走到第二排，还给裴苑——上次她的咖啡洒在我桌上。',
+      jump: 'route_x_start', flag: 'route', value: 'pei_yuan' }
   ] },
 
   // ============================================================
   // 路线 K：裴听路线
+  // Scene 05-K
   // ============================================================
   { type: 'label', name: 'route_k_start' },
   { type: 'narration', text: '【裴听路线 · 笔记本的传递】' },
@@ -116,20 +124,22 @@ const STORY_SCRIPT = [
   { type: 'narration', text: '裴听的字很工整。每一个公式都标了来源，每一步推导都附了注释。她甚至把我上次在课堂上随口提的那个解法也写进去了——用红笔圈了三个字："沈临渡法。"' },
   { type: 'thought', speaker: '沈临渡', text: '她是第一个认真对待我那些"歪门邪道"的人。' },
 
-  // Scene 05-K: 笔记本的延续
+  // Scene 05-K
   { type: 'transition', effect: 'fade' },
   { type: 'bg', value: 'classroom' },
   { type: 'label', name: 'scene_05k' },
   { type: 'narration', text: 'Scene 05-K · 笔记本上的对话' },
   { type: 'narration', text: '第二天，笔记本回到了我桌上。她在空白处用铅笔写了问题——那道题的第三步为什么可以跳过？我用钢笔写了回答。' },
-  { type: 'narration', text: '第三天——笔记本又回来了。这次多了一张便利贴：' },
+  { type: 'narration', text: '第三天——笔记本又回来了。这次多了一张便利贴。' },
   { type: 'dialogue', speaker: '便利贴', text: '"你不是学不会。你只是没人好好教。"' },
 
   // ============ CHOICE C03-K ============
   { type: 'label', name: 'choice_c03k' },
   { type: 'choice', choices: [
-    { text: '在笔记本上写："为什么帮我？"', jump: 'k_ask_why', flag: 'pei_ting_score', value: 10 },
-    { text: '什么都没写。只在笔记本扉页画了一颗星星。', jump: 'k_star', flag: 'pei_ting_score', value: 5 }
+    { text: '在笔记本上写："为什么帮我？"',
+      jump: 'k_ask_why', flag: 'pei_ting_score', value: 80 },
+    { text: '什么都没写。只在笔记本扉页画了一颗星星。',
+      jump: 'k_star', flag: 'pei_ting_score', value: 50 }
   ] },
 
   { type: 'label', name: 'k_ask_why' },
@@ -151,15 +161,16 @@ const STORY_SCRIPT = [
 
   // ============================================================
   // 路线 X：裴苑路线
+  // Scene 05-X
   // ============================================================
   { type: 'label', name: 'route_x_start' },
   { type: 'narration', text: '【裴苑路线 · 律师名片】' },
   { type: 'char_show', pos: 'right', name: 'pei_yuan', mood: 'neutral' },
   { type: 'narration', text: '我把笔记本拿到第二排。"裴苑。上次你咖啡洒我桌上，这本笔记本是你落下的。"' },
-  { type: 'narration', text: '她抬头看我。没有表情。然后低头看了一眼笔记本。"不是我的。"她说。' },
+  { type: 'narration', text: '她抬头看我。没有表情。然后低头看了一眼笔记本。' },
+  { type: 'dialogue', speaker: '裴苑', text: '"不是我的。"' },
   { type: 'thought', speaker: '沈临渡', text: '但她的手顿了一下。她认出那个笔记本了——只是没想到我会主动走过来。' },
 
-  // Scene 05-X
   { type: 'transition', effect: 'fade' },
   { type: 'bg', value: 'campus' },
   { type: 'label', name: 'scene_05x' },
@@ -172,20 +183,24 @@ const STORY_SCRIPT = [
   // ============ CHOICE C03-X ============
   { type: 'label', name: 'choice_c03x' },
   { type: 'choice', choices: [
-    { text: '"谢谢。不需要。"（把名片放回她桌上）', jump: 'x_refuse', flag: 'pei_yuan_route', value: 'decline' },
-    { text: '沉默地把名片收进口袋。什么也没说。', jump: 'x_accept', flag: 'pei_yuan_route', value: 'accept' }
+    { text: '"谢谢。不需要。"（把名片放回她桌上）',
+      jump: 'x_refuse', flag: 'pei_yuan_card', value: 'decline' },
+    { text: '沉默地把名片收进口袋。什么也没说。',
+      jump: 'x_accept', flag: 'pei_yuan_card', value: 'accept' }
   ] },
 
   { type: 'label', name: 'x_refuse' },
   { type: 'narration', text: '裴苑看了我一眼。没说话。把名片收回去了。' },
   { type: 'narration', text: '我以为这件事就这么过了。但后来我才知道——她还是找了那个律师。以她自己的名义。' },
+  { type: 'flag_set', flag: 'pei_yuan_triggered', value: true },
   { type: 'jump', label: 'x_continue' },
 
   { type: 'label', name: 'x_accept' },
-  { type: 'narration', text: '我什么都没说。只是把名片折好，放进校服内袋里。那个口袋后来还放过别的东西——一张画了对勾的纸条。' },
+  { type: 'narration', text: '我什么都没说。只是把名片折好，放进校服内袋里。' },
   { type: 'dialogue', speaker: '裴苑', text: '"你不想问我为什么？"' },
   { type: 'dialogue', speaker: '沈临渡', text: '"你自己会说。"' },
   { type: 'narration', text: '她愣了一下。然后嘴角动了一下——不是笑，是某种认可。' },
+  { type: 'flag_set', flag: 'pei_yuan_triggered', value: true },
 
   { type: 'label', name: 'x_continue' },
   { type: 'narration', text: '后来裴海生被举报了。一封匿名信寄到了市场监管局。证据链很全——包括他非法倒卖处方药的聊天记录、转账截图。' },
@@ -194,24 +209,24 @@ const STORY_SCRIPT = [
 
   // ============================================================
   // 路线 A：陆砚路线（自渡）
+  // Scenes 06, 07, 08
   // ============================================================
   { type: 'label', name: 'route_a_start' },
   { type: 'narration', text: '【自渡路线 · 河堤】' },
   { type: 'narration', text: '我没有翻开笔记本。也没有去找裴苑。我只是趴在桌上，闭上眼睛。' },
   { type: 'thought', speaker: '沈临渡', text: '不是不感激。是太累了。感激也需要力气。' },
-  { type: 'narration', text: '然后那天晚上。' },
 
-  // --- Scene 06: 河堤（陆砚路线核心节点）---
+  // --- Scene 06: 河堤 ---
   { type: 'transition', effect: 'fade' },
   { type: 'bg', value: 'riverbank' },
   { type: 'rain_start' },
   { type: 'label', name: 'scene_06' },
   { type: 'narration', text: 'Scene 06 · 河堤' },
-  { type: 'narration', text: '学校后门外有一条河。十月的夜风冷得像刀子。我坐在河堤的台阶上，膝盖抵着下巴，把自己团成很小的一团。' },
+  { type: 'narration', text: '那天晚上。学校后门外有一条河。十月的夜风冷得像刀子。我坐在河堤的台阶上，膝盖抵着下巴，把自己团成很小的一团。' },
   { type: 'narration', text: '手机里是裴海生发来的消息。他在问我——要不要仿制药。便宜很多。我没回。' },
   { type: 'narration', text: '然后我听到了脚步声。皮鞋踩在石板路上。不疾不徐。像是走了很久，又像是在犹豫。' },
   { type: 'char_show', pos: 'right', name: 'lu', mood: 'concerned' },
-  { type: 'narration', text: '路灯的光打在他的白衬衫上。他什么都没带。' },
+  { type: 'narration', text: '路灯的光打在他的白衬衫上。' },
   { type: 'dialogue', speaker: '陆砚', text: '"你怎么在这里？"' },
   { type: 'dialogue', speaker: '沈临渡', text: '"陆老师住教师公寓。散步散到河堤？"' },
   { type: 'narration', text: '他沉默了一会儿。在我旁边的台阶上坐下来。一个人的距离。不多不少。' },
@@ -220,18 +235,22 @@ const STORY_SCRIPT = [
   // ============ CHOICE C04 ============
   { type: 'label', name: 'choice_c04' },
   { type: 'choice', choices: [
-    { text: '把那盒牛奶喝了。', jump: 'c04_drink', flag: 'lu_token_1', value: true },
-    { text: '"陆老师。你不必管我。"', jump: 'c04_push_away', flag: 'lu_token_2', value: true },
-    { text: '"……谢谢。"', jump: 'c04_thanks', flag: 'lu_token_3', value: true }
+    { text: '把那盒牛奶喝了。',
+      jump: 'c04_drink', flag: 'lu_token', value_add: 1 },
+    { text: '"陆老师。你不必管我。"',
+      jump: 'c04_push_away', flag: 'lu_token', value_add: 1 },
+    { text: '"……谢谢。"',
+      jump: 'c04_thanks', flag: 'lu_token', value_add: 1 }
   ] },
 
   { type: 'label', name: 'c04_drink' },
   { type: 'narration', text: '我拿起那盒牛奶。草莓味的。温的。插上吸管，喝了一口。甜的。喉咙里堵了什么东西。但我没让它出来。' },
-  { type: 'thought', speaker: '沈临渡', text: '他是唯一一个不问我"为什么"的人。他只是拿了一盒牛奶。什么也不说。' },
   { type: 'narration', text: '陆砚没有看我。他看着对岸的灯火。但我感觉到——他在等我喝完。' },
   { type: 'jump', label: 'c04_merge' },
 
   { type: 'label', name: 'c04_push_away' },
+  // This choice triggers 陆砚 inner monologue reveal
+  { type: 'flag_set', flag: 'lu_inner_triggered', value: true },
   { type: 'dialogue', speaker: '沈临渡', text: '"陆老师。你不必管我。"' },
   { type: 'narration', text: '陆砚转过头来看我。' },
   { type: 'dialogue', speaker: '陆砚', text: '"我不是在管你。"' },
@@ -249,104 +268,133 @@ const STORY_SCRIPT = [
   { type: 'rain_stop' },
   { type: 'char_hide_all' },
   { type: 'narration', text: '他起身走了。皮鞋声越来越远。我握着那盒温热的草莓牛奶，掌心被捂得很烫。' },
-  { type: 'narration', text: '很多年之后我想起这个夜晚，想起他说的话——"你不必跟任何人解释。"他不只是在说论坛的事。他是在说——你的一切。你不必跟任何人解释。' },
+  { type: 'narration', text: '很多年之后我想起这个夜晚，想起他说的话——"你不必跟任何人解释。"他不只是在说论坛的事。他是在说——你的一切。' },
 
-  // --- Scene 07: 陆砚的房间（隐藏内心独白）---
+  // --- Scene 07: 陆砚的房间 ---
   { type: 'transition', effect: 'fade' },
   { type: 'bg', value: 'night' },
   { type: 'label', name: 'scene_07' },
   { type: 'narration', text: 'Scene 07 · 陆砚的房间' },
   { type: 'narration', text: '【系统提示：以下画面来自陆砚的视角。沈临渡不知道这些。但在这条路线中——这些画面会以回忆的形式，在很久以后被你知晓。】' },
   { type: 'narration', text: '那是同一天晚上。陆砚回到公寓，在黑暗里坐了二十分钟。' },
-  { type: 'narration', text: '他跟自己承认了。他去河堤，不是因为散步。他在教室里看到沈临渡没有去吃晚饭。他在食堂门口站了五分钟，买了一盒草莓牛奶。然后穿过操场，出了后门。他一直在走。一直在想——' },
-  { type: 'thought', speaker: '陆砚', text: '我为什么要去？他只是一个学生。一个需要帮助的学生。任何一个老师都会这样做。' },
-  { type: 'narration', text: '但他知道自己撒了谎。' },
-  { type: 'thought', speaker: '陆砚', text: '不是"任何一个老师"。是我。是我这个老师。是我这个——人。' },
-  { type: 'narration', text: '他在河堤上看到沈临渡缩成一团的时候，心脏停了一拍。那一瞬间什么都没想，只想走过去。走到很近很近。然后他说："你不是。"' },
-  { type: 'thought', speaker: '陆砚', text: '我对他说"不是"的时候，声音很轻。不是因为没底气。是因为——我怕再多说一个字，就把所有东西都说出来了。' },
+  { type: 'narration', text: '他跟自己承认了。他去河堤，不是因为散步。他在教室里看到沈临渡没有去吃晚饭。他在食堂门口站了五分钟，买了一盒草莓牛奶。然后穿过操场，出了后门。' },
+  { type: 'narration', text: '他在河堤上看到沈临渡缩成一团的时候，心脏停了一拍。那一瞬间什么都没想，只想走过去。走到很近很近。' },
+
   { type: 'narration', text: '——后来宋知远问他："你碰过他没有？"' },
-  { type: 'dialogue', speaker: '陆砚', text: '"没有。什么都没有。"' },
+  { type: 'thought', speaker: '陆砚', text: '"没有。什么都没有。"' },
   { type: 'narration', text: '但他又说——' },
-  { type: 'dialogue', speaker: '陆砚', text: '"我每天想。控制不住地想。"' },
+  { type: 'thought', speaker: '陆砚', text: '"我每天想。控制不住地想。"' },
+
   { type: 'narration', text: '那天晚上。陆砚走进卫生间。水龙头开着。灰蓝色的尘袋被冲得湿透了。他把它装进黑色塑料袋，扎紧。扔进楼下的垃圾桶。' },
   { type: 'narration', text: '回房间之后，他在床头坐了很久。感觉自己被抽空了。' },
   { type: 'narration', text: '他把那个东西扔了。扔掉的不是尘袋。是他自己伸出去的那只手。' },
-  { type: 'thought', speaker: '陆砚', text: '往后退一步。这是他的第一步。也是最痛的一步。' },
+  { type: 'narration', text: '宋知远说："那就有救。你还知道让自己别过去——说明你还站在悬崖的这边。"' },
+  { type: 'narration', text: '"我教你一件事——把你偷的东西还回去。还给那个孩子。还给他光。"' },
 
-  // --- Scene 08: 梅蕊支线 ---
+  // --- Scene 08: 沫沫支线 ---
   { type: 'transition', effect: 'fade' },
   { type: 'bg', value: 'campus' },
   { type: 'label', name: 'scene_08' },
-  { type: 'narration', text: 'Scene 08 · 梅蕊' },
-  { type: 'narration', text: '那天放学后，我在走廊尽头撞见一个人。梅蕊——班上最张扬的那个女生。她蹲在窗台下，哭。看到我，她下意识地把脸转过去。"走开。"' },
+  { type: 'narration', text: 'Scene 08 · 沫沫支线' },
+  { type: 'narration', text: '那天放学后，我在走廊尽头撞见一个人。沫沫——班上最张扬的那个女生。她蹲在窗台下，哭。' },
+  { type: 'dialogue', speaker: '沫沫', text: '"走开。"' },
   { type: 'thought', speaker: '沈临渡', text: '我本来想走。但她的校服袖子卷起来了。手腕上有几条很浅的红印。我认得那些印子。' },
 
   // ============ CHOICE C05 ============
   { type: 'label', name: 'choice_c05' },
   { type: 'choice', choices: [
-    { text: '转身走开。', jump: 'c05_leave', flag: 'meirui_seen', value: false },
-    { text: '"你在哭什么？"', jump: 'c05_ask', flag: 'meirui_seen', value: true },
-    { text: '"有什么话，找校长说。摆这副样子给谁看。"', jump: 'c05_harsh', flag: 'meirui_seen', value: true }
+    { text: '转身走开。', jump: 'c05_leave' },
+    { text: '"你在哭什么？"', jump: 'c05_ask' },
+    { text: '"有什么话，找校长说。摆这副样子给谁看。"', jump: 'c05_harsh' }
   ] },
 
   { type: 'label', name: 'c05_leave' },
   { type: 'narration', text: '我转身走了。有些事情，不是我的事。' },
   { type: 'narration', text: '但走到楼梯口的时候，我听到她站起来的声音。吸鼻子的声音。然后脚步声往反方向去了。' },
-  { type: 'thought', speaker: '沈临渡', text: '她不想被人看见。就像我也不想。' },
   { type: 'jump', label: 'scene_08_end' },
 
   { type: 'label', name: 'c05_ask' },
-  { type: 'narration', text: '梅蕊抬起头看我。眼眶红了一圈，但没哭出声。她在忍。' },
-  { type: 'dialogue', speaker: '梅蕊', text: '"你知道为什么——我之前要跟别人说沈临渡的事吗？因为不把矛头指向别人，别人就会指向我。在这个学校里，弱者只有一个位置。"' },
+  { type: 'narration', text: '沫沫抬起头看我。眼眶红了一圈，但没哭出声。她在忍。' },
+  { type: 'dialogue', speaker: '沫沫', text: '"你知道为什么——我之前要跟别人说沈临渡的事吗？因为不把矛头指向别人，别人就会指向我。在这个学校里，弱者只有一个位置。"' },
   { type: 'narration', text: '我看着她。然后说：' },
   { type: 'dialogue', speaker: '沈临渡', text: '"那个位置不好坐。我知道。"' },
-  { type: 'narration', text: '她愣了很久。然后说了一句——"对不起。"' },
+  { type: 'narration', text: '她愣了很久。然后说了一句——' },
+  { type: 'dialogue', speaker: '沫沫', text: '"对不起。"' },
   { type: 'jump', label: 'scene_08_end' },
 
   { type: 'label', name: 'c05_harsh' },
   { type: 'dialogue', speaker: '沈临渡', text: '"有什么话，找校长说。摆这副样子给谁看。"' },
-  { type: 'narration', text: '梅蕊猛地抬头。她的眼神很复杂——被刺到了，但也不完全是愤怒。' },
-  { type: 'dialogue', speaker: '梅蕊', text: '"你以为你是谁？你以为你熬过来了，就比我了不起？"' },
+  { type: 'narration', text: '沫沫猛地抬头。她的眼神很复杂——被刺到了，但也不完全是愤怒。' },
+  { type: 'dialogue', speaker: '沫沫', text: '"你以为你是谁？你以为你熬过来了，就比我了不起？"' },
   { type: 'narration', text: '我看着她。然后笑了。不是嘲笑。是理解。' },
   { type: 'dialogue', speaker: '沈临渡', text: '"我没熬过来。我只是站起来了。你也能。"' },
   { type: 'narration', text: '她没说话。但那天以后——她没再参与过任何关于我的八卦。' },
 
   { type: 'label', name: 'scene_08_end' },
-  { type: 'narration', text: '后来梅蕊转学了。走之前给我发了一条私信。只有四个字。' },
-  { type: 'dialogue', speaker: '梅蕊', text: '"谢谢你，沈临渡。"' },
+  { type: 'narration', text: '后来沫沫转学了。走之前给我发了一条私信。只有四个字。' },
+  { type: 'dialogue', speaker: '沫沫', text: '"谢谢你，沈临渡。"' },
   { type: 'narration', text: '我没有回。但那条私信，我一直没删。' },
   { type: 'char_hide_all' },
 
+  // --- 自渡路线: 发送照片选择 (Bad End gate) ---
+  { type: 'transition', effect: 'fade' },
+  { type: 'bg', value: 'night' },
+  { type: 'label', name: 'scene_photo_choice' },
+  { type: 'narration', text: '那天晚上。手机屏幕亮着。那个社交账号的私信还在闪。' },
+  { type: 'narration', text: '"再发一张。""你上次那张真的好看。""给你钱。"' },
+  { type: 'narration', text: '我看着自己的手机屏幕。那个灰蓝色的尘袋。那截小腿上的旧疤。' },
+  { type: 'narration', text: '然后我想起那盒草莓牛奶。想起他说的——"你的世界比你以为的要好得多。"' },
+
+  // ============ CHOICE: 发送照片? ============
+  { type: 'label', name: 'choice_send_photo' },
+  { type: 'choice', choices: [
+    { text: '退出私信页面。把聊天记录全删了。', jump: 'photo_no' },
+    { text: '按下发送键。', jump: 'photo_yes', flag: 'sent_photo', value: true }
+  ] },
+
+  { type: 'label', name: 'photo_no' },
+  { type: 'flag_set', flag: 'self_awareness', value_add: 2 },
+  { type: 'narration', text: '我退出私信页面。把那些聊天记录全删了。' },
+  { type: 'narration', text: '手机屏幕暗了。我仰头靠在椅子上。天花板上的灯管嗡嗡响。' },
+  { type: 'narration', text: '然后我穿上外套。去食堂。今天的晚饭是青椒肉丝。我吃了两份。' },
+  { type: 'jump', label: 'act3_merge' },
+
+  { type: 'label', name: 'photo_yes' },
+  { type: 'narration', text: '我按了发送键。' },
+  { type: 'narration', text: '照片被转发了无数次。私信涌进来——好奇的、污秽的、猎奇的。我盯着那些数字看了很久。没有感觉。' },
+  { type: 'narration', text: '退出手机屏幕。窗外是灰蓝色的天空。像一件洗了太多次的旧衬衫。' },
+  { type: 'jump', label: 'act3_merge' },
+
   // ============================================================
-  // 第三幕  Act 3 Merge Point
+  // 第三幕  Act 3 Merge Point — Scene 09: 最后一课
   // ============================================================
   { type: 'label', name: 'act3_merge' },
   { type: 'transition', effect: 'fade' },
   { type: 'bg', value: 'classroom' },
+  { type: 'char_hide_all' },
   { type: 'narration', text: '第三幕 · 最后一课' },
 
-  // --- Scene 09: 最后一课 ---
   { type: 'label', name: 'scene_09' },
   { type: 'narration', text: 'Scene 09 · 最后一课' },
   { type: 'narration', text: '学期最后一节语文课。陆砚在黑板上写了一个学期的知识梳理。下课前五分钟，他放下粉笔。' },
   { type: 'dialogue', speaker: '陆砚', text: '"这学期的课就到这里。下学期——会有一位新老师来接我的课。"' },
-  { type: 'narration', text: '教室安静了一瞬。然后各种各样的声音炸开了。"陆老师你要调走？""为什么？""那下学期语文谁教？"' },
+  { type: 'narration', text: '教室安静了一瞬。然后炸开了。"陆老师你要调走？""为什么？"' },
   { type: 'dialogue', speaker: '陆砚', text: '"是教学安排上的调整。新老师也很优秀。"' },
   { type: 'narration', text: '我坐在最后一排。没说话。只是看着他。' },
   { type: 'narration', text: '下课铃响了。他拿起教案，走过我的座位。脚步没停。但他放在我桌上的那一页作文纸——最后一页——留了批注。' },
   { type: 'dialogue', speaker: '批注', text: '"你的世界——比你以为的要好得多。加油。"' },
   { type: 'narration', text: '没有署名。只有一个蓝色的对勾。' },
 
-  // ============ CHOICE C06 — Final Choice ============
+  // ============ CHOICE C06 ============
   { type: 'label', name: 'choice_c06' },
   { type: 'choice', choices: [
-    { text: '把那一页撕下来，带走。', jump: 'c06_tear', flag: 'final_gesture', value: 'tear' },
-    { text: '用手指描了一遍那些字，然后把本子合上。', jump: 'c06_trace', flag: 'final_gesture', value: 'trace' },
-    { text: '拍了一张照片，然后把那页纸放回讲台上。', jump: 'c06_photo', flag: 'final_gesture', value: 'photo' }
+    { text: '把那一页撕下来，带走。', jump: 'c06_tear', flag: 'c06_choice', value: 'tear' },
+    { text: '用手指描了一遍那些字，然后把本子合上。', jump: 'c06_trace', flag: 'c06_choice', value: 'trace' },
+    { text: '拍了一张照片，然后把那页纸放回讲台上。', jump: 'c06_photo', flag: 'c06_choice', value: 'photo' }
   ] },
 
   { type: 'label', name: 'c06_tear' },
-  { type: 'narration', text: '我把那一页撕下来了。折得很小。放进了校服内袋里——和裴苑的名片放在一起。那个口袋，装过很多重要的东西。' },
+  { type: 'narration', text: '我把那一页撕下来了。折得很小。放进了校服内袋里。那个口袋，装过很多重要的东西。' },
   { type: 'jump', label: 'ending_dispatch' },
 
   { type: 'label', name: 'c06_trace' },
@@ -359,32 +407,43 @@ const STORY_SCRIPT = [
   { type: 'jump', label: 'ending_dispatch' },
 
   // ============================================================
-  // 结局分发
+  // 结局分发 — 严格按照文档条件
   // ============================================================
   { type: 'label', name: 'ending_dispatch' },
 
-  // Check route flag
+  // Check: sent_photo with low self_awareness → Bad End
+  { type: 'flag_check', flag: 'sent_photo', branches: [
+    { value: true, label: 'check_bad_end_cond' }
+  ], default: 'dispatch_by_route' },
+
+  { type: 'label', name: 'check_bad_end_cond' },
+  { type: 'flag_check', flag: 'self_awareness', branches: [
+    { value: 0, label: 'ending_d' }
+  ], default: 'dispatch_by_route' },
+
+  // Route dispatch
+  { type: 'label', name: 'dispatch_by_route' },
   { type: 'flag_check', flag: 'route', branches: [
     { value: 'pei_ting', label: 'ending_b_dispatch' },
     { value: 'pei_yuan', label: 'ending_c1' },
     { value: 'lu_yan', label: 'ending_a_dispatch' }
   ], default: 'scene_09' },
 
-  // --- Route A dispatch (陆砚) ---
+  // Route A: 自渡路线
   { type: 'label', name: 'ending_a_dispatch' },
   { type: 'flag_check', flag: 'self_awareness', branches: [
-    { value: 2, label: 'ending_a1' },
-    { value: 1, label: 'ending_a1' }
-  ], default: 'ending_d' },
+    { value: 0, label: 'ending_d' }
+  ], default: 'ending_a1' },
 
-  // --- Route B dispatch (裴听) ---
+  // Route B: 裴听路线
   { type: 'label', name: 'ending_b_dispatch' },
   { type: 'flag_check', flag: 'pei_ting_score', branches: [
-    { value: 10, label: 'ending_b1' }
+    { value: 80, label: 'ending_b1' }
   ], default: 'ending_b2' },
 
   // ============================================================
-  // ENDING A1: True End "我的世界不止一种颜色了"
+  // ENDING A1: True End「我的世界不止一种颜色了」
+  // 条件: 自渡路线 + 自知值 ≥ 1 + 未发送照片
   // ============================================================
   { type: 'label', name: 'ending_a1' },
   { type: 'transition', effect: 'fade' },
@@ -392,18 +451,19 @@ const STORY_SCRIPT = [
   { type: 'char_show', pos: 'center', name: 'shen', mood: 'softened' },
   { type: 'narration', text: '【True End · 我的世界不止一种颜色了】' },
   { type: 'narration', text: '很多年以后。沈临渡考上了大学。一所著名的重点大学。全省前百分之五。' },
-  { type: 'narration', text: '母亲转到了一家省级医院，用上了医保目录里的新药。继父没再出现。裴海生被举报涉嫌非法经营——有人匿名给市场监管局写了一封信。' },
+  { type: 'narration', text: '母亲转到了一家省级医院，用上了医保目录里的新药。继父没再出现。裴海生被举报涉嫌非法经营——有人匿名给市场监管局写了一封信，附上了证据。' },
   { type: 'narration', text: '沈临渡知道那封信是谁写的。从来没去验证。' },
   { type: 'narration', text: '他后来寄了一张照片。没有署名，没有地址。信封上只写了"陆砚收"。照片背面只有一行字——' },
   { type: 'dialogue', speaker: '沈临渡', text: '"陆老师。我的世界——不止一种颜色了。"' },
   { type: 'narration', text: '陆砚在支教的山村小学收到了这张照片。他看了很久。很久很久。然后他把照片夹进那本语文教材里——《归去来兮辞》那一页的旁边。' },
   { type: 'narration', text: '窗外是远山。他笑了一下。' },
   { type: 'narration', text: '像是被渡过了一条很长很长的河。' },
-  { type: 'narration', text: '—— 你是我藏在教案下的一场大雨。——' },
+  { type: 'narration', text: '—— 你是我藏在教案下的一场大雨 ——' },
   { type: 'ending', ending: 'true' },
 
   // ============================================================
-  // ENDING B1: 裴听路线 Good End "笔记本上的春天"
+  // ENDING B1: 裴听路线 Good End「笔记本上的春天」
+  // 条件: 裴听路线 + C03-K选A(问"为什么") + 裴听积累值≥80
   // ============================================================
   { type: 'label', name: 'ending_b1' },
   { type: 'transition', effect: 'fade' },
@@ -415,13 +475,13 @@ const STORY_SCRIPT = [
   { type: 'dialogue', speaker: '裴听的字', text: '"这学期——你不需要我的笔记了。因为你已经会了。"' },
   { type: 'narration', text: '笔记本里夹着一样东西——一片压平了的银杏叶。叶脉上用针尖刻了一个小小的手机号。没有名字。也不需要名字。' },
   { type: 'narration', text: '沈临渡把那片叶子举在阳光下看了很久。半透明的。叶脉的纹路像一条河。' },
-  { type: 'narration', text: '他没有打那个电话——至少那个学期没有。' },
-  { type: 'narration', text: '但他把那片叶子收好了。很多年之后还收着。' },
-  { type: 'narration', text: '—— 有些感情不需要被说破。笔记本上的那些字，已经说完了所有能说的话。——' },
+  { type: 'narration', text: '他没有打那个电话——至少那个学期没有。但他把那片叶子收好了。很多年之后还收着。' },
+  { type: 'narration', text: '—— 有些感情不需要被说破。笔记本上的那些字，已经说完了所有能说的话。 ——' },
   { type: 'ending', ending: 'good' },
 
   // ============================================================
-  // ENDING B2: 裴听路线 Normal End "渡口"
+  // ENDING B2: 裴听路线 Normal End「渡口」
+  // 条件: 裴听路线 + C03-K选B(画星星)
   // ============================================================
   { type: 'label', name: 'ending_b2' },
   { type: 'transition', effect: 'fade' },
@@ -431,11 +491,12 @@ const STORY_SCRIPT = [
   { type: 'narration', text: '但她留下的那些知识点——沈临渡都会了。他期末数学考了87分。' },
   { type: 'narration', text: '高考结束后。他发了一条朋友圈——没有文字，只有一张刚拍的天空。一个没有名字的账号点了赞。头像是一只戴圆眼镜的小狗。' },
   { type: 'narration', text: '他知道那是谁。她也会一直往前走。' },
-  { type: 'narration', text: '—— 有些相遇不是结果，是转折。一本笔记本，就够了。——' },
+  { type: 'narration', text: '—— 有些相遇不是结果，是转折。一本笔记本，就够了。 ——' },
   { type: 'ending', ending: 'good' },
 
   // ============================================================
-  // ENDING C1: 裴苑路线 "末班火车"
+  // ENDING C1: 裴苑路线「末班火车」
+  // 条件: 裴苑路线 + 触发裴苑支线事件
   // ============================================================
   { type: 'label', name: 'ending_c1' },
   { type: 'transition', effect: 'fade' },
@@ -449,32 +510,28 @@ const STORY_SCRIPT = [
   { type: 'narration', text: '她后来去了法国留学。在车站送别的时候，她说了一句话。' },
   { type: 'dialogue', speaker: '裴苑', text: '"你不知道为什么在车站说这些。你不知道——有些人让你觉得这个世界不是全坏的。你是我见过第一个——受了那么多罪、还能站着把话说清楚的人。"' },
   { type: 'narration', text: '火车开了。她隔着车窗看了他一眼。那个眼神很安静。' },
-  { type: 'narration', text: '—— 有些人的温暖不是火，是末班火车。它不会专门等你，但你赶上了。——' },
+  { type: 'narration', text: '—— 有些人的温暖不是火，是末班火车。它不会专门等你，但你赶上了。 ——' },
   { type: 'ending', ending: 'good' },
 
   // ============================================================
-  // ENDING D: Bad End "一张删不掉的照片"
+  // ENDING D: Bad End「一张删不掉的照片」
+  // 条件: 自渡路线 + 发送照片 + 自知值 < 3(即自知值=0)
   // ============================================================
   { type: 'label', name: 'ending_d' },
   { type: 'transition', effect: 'fade' },
   { type: 'bg', value: 'night' },
   { type: 'rain_start' },
   { type: 'narration', text: '【Bad End · 一张删不掉的照片】' },
-  { type: 'narration', text: '那天晚上。' },
-  { type: 'narration', text: '沈临渡坐在床边，看着自己的手机屏幕。' },
-  { type: 'narration', text: '那个社交账号的私信还在闪——"再发一张。""你穿那个真的很好看。""给你钱。"' },
-  { type: 'narration', text: '他的拇指停在发送键上方。犹豫了很久。' },
-  { type: 'narration', text: '然后他按了。' },
   { type: 'narration', text: '照片被转发了无数次。私信涌进来——好奇的、污秽的、猎奇的。他盯着那些数字看了很久。没有感觉。' },
   { type: 'narration', text: '退出手机屏幕。窗外是灰蓝色的天空。像一件洗了太多次的旧衬衫。' },
   { type: 'narration', text: '他本来也可以被好好对待的。' },
-
+  { type: 'narration', text: '' },
   { type: 'narration', text: '—— 系统提示 ——' },
   { type: 'narration', text: '这不是结局。这是选择的重量。' },
   { type: 'narration', text: '那个对你说"这个世界不止一种颜色"的人，还站在原处。' },
   { type: 'narration', text: '你可以回到关键节点，为沈临渡选择另一条路。' },
   { type: 'choice', choices: [
-    { text: '回到分叉点（Scene 04）重新选择', jump: 'scene_04' },
+    { text: '回到分叉点（Scene 04）重新选择路线', jump: 'scene_04' },
     { text: '回到天台（Scene 03）重新选择', jump: 'choice_c01' },
     { text: '回到标题画面', jump: 'scene_01' }
   ] },
@@ -492,7 +549,7 @@ const STORY_SCRIPT = [
   { type: 'narration', text: '很好的光。很安静的光。' },
   { type: 'narration', text: '他只是喝牛奶。什么都没有发生。' },
   { type: 'narration', text: '陆砚醒来的时候，心脏撞得胸腔生疼。他在黑暗中坐了很久。然后说了一句话——只有他自己听见。' },
-  { type: 'dialogue', speaker: '陆砚', text: '"我知道那是夏天的事。没有夏天了。只有我自己知道。"' },
+  { type: 'narration', text: '"我知道那是夏天的事。没有夏天了。只有我自己知道。"' },
   { type: 'narration', text: '然后他起床。洗干净脸。拿出柜子里第二件扣好的衬衫。走进教室。' },
   { type: 'narration', text: '【陆砚的梦 · 完】' },
 
@@ -514,8 +571,6 @@ const STORY_SCRIPT = [
   { type: 'narration', text: '这是他们之间唯一一件没有戳破的东西。' },
   { type: 'narration', text: '【继父离开的那天 · 完】' },
 
-  // ============================================================
-  // 全局标签 END
   // ============================================================
   { type: 'label', name: 'end' },
   { type: 'ending', ending: 'default' }

@@ -145,7 +145,13 @@ class VNEngine {
       case 'choice': this.displayChoice(cmd.choices); break;
       case 'jump': this.runLine(this.findLabel(cmd.label)); break;
       case 'label': this.runNext(); break;
-      case 'flag_set': this.flags[cmd.flag] = cmd.value; this.runNext(); break;
+      case 'flag_set':
+        if (cmd.value_add !== undefined) {
+          this.flags[cmd.flag] = (this.flags[cmd.flag] || 0) + cmd.value_add;
+        } else {
+          this.flags[cmd.flag] = cmd.value;
+        }
+        this.runNext(); break;
       case 'flag_check': this.handleFlagCheck(cmd); break;
       case 'ending': this.showEnding(cmd.ending); break;
       case 'wait': setTimeout(() => this.runNext(), cmd.duration); break;
@@ -235,7 +241,12 @@ class VNEngine {
       btn.addEventListener('click', () => {
         panel.classList.add('hidden');
         if (ch.flag) {
-          this.flags[ch.flag] = ch.value;
+          // Support value_add (cumulative) and value (set)
+          if (ch.value_add !== undefined) {
+            this.flags[ch.flag] = (this.flags[ch.flag] || 0) + ch.value_add;
+          } else if (ch.value !== undefined) {
+            this.flags[ch.flag] = ch.value;
+          }
           // Track route for display
           if (ch.flag === 'route') {
             const routeNames = { 'pei_ting': '裴听路线 · 笔记本的传递', 'lu_yan': '自渡路线 · 河堤', 'pei_yuan': '裴苑路线 · 律师名片' };
@@ -244,11 +255,9 @@ class VNEngine {
             if (indicator) indicator.textContent = '◆ ' + this.routeName;
           }
           // Track EX unlocks
-          if (ch.flag === 'lu_token_1' || ch.flag === 'lu_token_2' || ch.flag === 'lu_token_3') {
+          if (ch.flag === 'lu_token' && ch.value_add >= 1) {
             this.unlockedEx['ex01'] = true;
-          }
-          if (ch.flag === 'meirui_seen' && ch.value === true) {
-            this.unlockedEx['meirui'] = true;
+            try { localStorage.setItem('vn_ex', JSON.stringify(this.unlockedEx)); } catch(e) {}
           }
         }
         this.addHistory('【选择】', ch.text);
