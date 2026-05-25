@@ -1,15 +1,48 @@
 /**
- * Main Entry - 《渡》 Visual Novel
+ * Main Entry - 《你是我藏在教案下的一场大雨》 Visual Novel
  */
 
 let engine;
+
+function updateTitleEndings() {
+  const container = document.getElementById('ending-collection');
+  if (!container) return;
+  const endings = engine.unlockedEndings || {};
+  const names = {
+    'true': '渡', 'good': '光', 'bad': '沉', 'hidden': '雨'
+  };
+  let html = '已解锁结局：';
+  let hasAny = false;
+  for (const [key, label] of Object.entries(names)) {
+    const unlocked = endings[key];
+    if (unlocked) hasAny = true;
+    html += `<span class="ending-dot${unlocked ? ' unlocked' : ''}${key === 'hidden' ? ' hidden-ending' : ''}">◆ ${label}</span>`;
+  }
+  if (!hasAny) html += '<span class="ending-dot">暂无</span>';
+  container.innerHTML = html;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   engine = new VNEngine();
   engine.loadScript(STORY_SCRIPT);
 
+  // Add ending collection display to title screen
+  const titleContent = document.querySelector('.title-content');
+  const endingDiv = document.createElement('div');
+  endingDiv.id = 'ending-collection';
+  endingDiv.className = 'ending-collection';
+  const titleFooter = document.querySelector('.title-footer');
+  titleContent.insertBefore(endingDiv, titleFooter);
+
+  // Add route indicator to game screen
+  const routeDiv = document.createElement('div');
+  routeDiv.id = 'route-indicator';
+  routeDiv.className = 'route-indicator';
+  document.getElementById('game-screen').appendChild(routeDiv);
+
   // === Title Screen Buttons ===
   document.getElementById('btn-start').addEventListener('click', () => {
+    updateTitleEndings();
     engine.start();
   });
 
@@ -53,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('btn-auto').textContent = '自动';
       document.getElementById('btn-skip').textContent = '快进';
       document.getElementById('text-box').classList.remove('dim');
+      updateTitleEndings();
       engine.showScreen('title-screen');
     }
   });
@@ -65,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-close-save').addEventListener('click', () => {
     engine.hideSavePanel();
     if (!engine.currentLine) {
+      updateTitleEndings();
       engine.showScreen('title-screen');
     }
   });
@@ -86,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // === Ending restart button ===
   document.getElementById('btn-restart').addEventListener('click', () => {
+    updateTitleEndings();
     engine.showScreen('title-screen');
   });
 
@@ -140,4 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('game-screen').addEventListener('contextmenu', (e) => {
     e.preventDefault();
   });
+
+  // === Update ending collection on title screen ===
+  updateTitleEndings();
 });

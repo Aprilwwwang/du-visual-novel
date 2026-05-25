@@ -19,8 +19,12 @@ class VNEngine {
     this.flags = {}; // branching flags
     this.currentBg = '';
     this.rainActive = false;
+    this.unlockedEx = {}; // EX scene unlock tracking
+    this.unlockedEndings = {}; // ending collection tracking
+    this.routeName = ''; // current route display name
 
     this.loadSaveData();
+    this.loadUnlockedEndings();
   }
 
   loadScript(scriptData) {
@@ -230,7 +234,23 @@ class VNEngine {
       btn.textContent = ch.text;
       btn.addEventListener('click', () => {
         panel.classList.add('hidden');
-        if (ch.flag) this.flags[ch.flag] = ch.value;
+        if (ch.flag) {
+          this.flags[ch.flag] = ch.value;
+          // Track route for display
+          if (ch.flag === 'route') {
+            const routeNames = { 'pei_ting': '裴听路线 · 笔记本的传递', 'lu_yan': '自渡路线 · 河堤', 'pei_yuan': '裴苑路线 · 律师名片' };
+            this.routeName = routeNames[ch.value] || '';
+            const indicator = document.getElementById('route-indicator');
+            if (indicator) indicator.textContent = '◆ ' + this.routeName;
+          }
+          // Track EX unlocks
+          if (ch.flag === 'lu_token_1' || ch.flag === 'lu_token_2' || ch.flag === 'lu_token_3') {
+            this.unlockedEx['ex01'] = true;
+          }
+          if (ch.flag === 'meirui_seen' && ch.value === true) {
+            this.unlockedEx['meirui'] = true;
+          }
+        }
         this.addHistory('【选择】', ch.text);
         if (ch.jump) this.runLine(this.findLabel(ch.jump));
         else this.runNext();
@@ -485,9 +505,9 @@ class VNEngine {
     this.showScreen('ending-screen');
 
     const endings = {
-      'true': { title: '渡', sub: '被渡过的那条河，很长很长。\n你是我藏在教案下的一场大雨。' },
-      'good': { title: '光', sub: '有些光照进来，就再也不会熄灭。\n他的世界不止一种颜色。' },
-      'bad': { title: '沉', sub: '有些河流太宽，渡不过去。\n有些人，注定只能在对岸相望。' },
+      'true': { title: '渡', sub: '我的世界不止一种颜色了。\n\n—— 你是我藏在教案下的一场大雨 ——' },
+      'good': { title: '光', sub: '有些相遇不是结果，是转折。\n笔记本上的那些字，已经说完了所有能说的话。' },
+      'bad': { title: '沉', sub: '这不是结局。这是选择的重量。\n那个对你说"这个世界不止一种颜色"的人，还站在原处。' },
       'hidden': { title: '雨', sub: '那场雨没有停。\n他把教案翻开，里面是干的。' },
       'default': { title: '终', sub: '故事到此结束。\n感谢您的阅读。' }
     };
@@ -495,6 +515,12 @@ class VNEngine {
     const e = endings[type] || endings['default'];
     document.getElementById('ending-title').textContent = e.title;
     document.getElementById('ending-subtitle').textContent = e.sub;
+
+    // Track unlocked endings
+    if (type !== 'default') {
+      this.unlockedEndings[type] = true;
+      try { localStorage.setItem('vn_endings', JSON.stringify(this.unlockedEndings)); } catch(e) {}
+    }
   }
 
   // === Transition ===
@@ -521,6 +547,8 @@ class VNEngine {
     this.flags = {};
     this.history = [];
     this.currentChoices = [];
+    this.routeName = '';
+    document.getElementById('route-indicator').textContent = '';
     this.hideAllCharacters();
     this.stopRain();
     this.isAuto = false;
@@ -530,6 +558,38 @@ class VNEngine {
     document.getElementById('text-box').classList.remove('dim');
     this.showScreen('game-screen');
     this.runLine(0);
+  }
+
+  loadUnlockedEndings() {
+    try {
+      const raw = localStorage.getItem('vn_endings');
+      if (raw) this.unlockedEndings = JSON.parse(raw);
+    } catch(e) { this.unlockedEndings = {}; }
+  }
+
+  showSceneTitle(title) {
+    // Flash a scene title overlay
+    const overlay = document.getElementById('scene-overlay');
+    if (!overlay) return;
+    overlay.textContent = title;
+    overlay.style.opacity = '1';
+    overlay.style.transition = 'none';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.fontSize = '24px';
+    overlay.style.color = 'rgba(255,255,255,0.7)';
+    overlay.style.letterSpacing = '0.2em';
+    setTimeout(() => {
+      overlay.style.transition = 'opacity 1s ease';
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        overlay.textContent = '';
+        overlay.style.fontSize = '';
+        overlay.style.color = '';
+      }, 1000);
+    }, 1500);
   }
 }
 

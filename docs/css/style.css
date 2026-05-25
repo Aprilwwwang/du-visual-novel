@@ -81,6 +81,32 @@ body {
   background: rgba(255,255,255,0.08); border-color: rgba(200,180,230,0.3);
   color: #e8e0f8; box-shadow: 0 0 20px rgba(140,120,200,0.15);
 }
+.ending-collection {
+  position: absolute; bottom: 60px;
+  display: flex; gap: 16px;
+  color: rgba(255,255,255,0.25); font-size: 12px;
+  letter-spacing: 0.15em; font-family: var(--font-ui);
+}
+.ending-collection .ending-dot { transition: color 0.3s; }
+.ending-collection .ending-dot.unlocked { color: rgba(200,180,240,0.6); }
+.ending-collection .ending-dot.hidden-ending { color: rgba(200,160,100,0.7); }
+
+.bad-end-overlay {
+  position: absolute; inset: 0; z-index: 22;
+  background: rgba(20,5,5,0.85); display: flex;
+  flex-direction: column; align-items: center; justify-content: center;
+  color: #c8a0a0; font-family: var(--font-main);
+  animation: fadeFromBlack 1.5s ease;
+}
+.bad-end-overlay h2 {
+  font-size: 28px; letter-spacing: 0.3em; font-weight: 300;
+  margin-bottom: 16px; color: #d4a0a0;
+}
+.bad-end-overlay p {
+  font-size: 14px; letter-spacing: 0.1em; max-width: 400px; text-align: center;
+  line-height: 1.8; margin-bottom: 24px;
+}
+
 .title-footer {
   position: absolute; bottom: 32px;
   color: rgba(255,255,255,0.2); font-size: 12px; letter-spacing: 0.3em;
@@ -96,6 +122,15 @@ body {
 .scene-overlay {
   position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(ellipse at 50% 80%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+  font-family: var(--font-main);
+  display: none;
+}
+.route-indicator {
+  position: absolute; top: 40px; left: 16px;
+  font-family: var(--font-ui); font-size: 12px;
+  color: rgba(200,180,220,0.5); letter-spacing: 0.1em;
+  z-index: 10; pointer-events: none;
+  transition: opacity 0.8s ease;
 }
 
 /* Scene Backgrounds */
