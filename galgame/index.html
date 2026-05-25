@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《渡》 ——你是我藏在教案下的一场大雨</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="game-container">
+  <!-- Title Screen -->
+  <div id="title-screen" class="screen active">
+    <div class="title-bg"></div>
+    <div class="title-content">
+      <h1 class="title-main">渡</h1>
+      <p class="title-sub">——你是我藏在教案下的一场大雨</p>
+      <div class="title-menu">
+        <button id="btn-start" class="menu-btn">新的开始</button>
+        <button id="btn-load" class="menu-btn">继续旅程</button>
+        <button id="btn-settings" class="menu-btn">系统设置</button>
+      </div>
+      <p class="title-footer">A Visual Novel</p>
+    </div>
+  </div>
+
+  <!-- Main Game Screen -->
+  <div id="game-screen" class="screen">
+    <div id="scene-bg" class="scene-bg"></div>
+    <div id="scene-overlay" class="scene-overlay"></div>
+    <div id="character-left" class="character-sprite left"></div>
+    <div id="character-right" class="character-sprite right"></div>
+    <div id="character-center" class="character-sprite center"></div>
+
+    <!-- Text Box -->
+    <div id="text-box" class="text-box">
+      <div id="speaker-tag" class="speaker-tag"></div>
+      <div id="dialogue-text" class="dialogue-text"></div>
+      <div id="click-indicator" class="click-indicator">▼</div>
+    </div>
+
+    <!-- Choice Panel -->
+    <div id="choice-panel" class="choice-panel hidden">
+      <div id="choice-buttons" class="choice-buttons"></div>
+    </div>
+
+    <!-- History -->
+    <div id="history-panel" class="history-panel hidden">
+      <div id="history-content" class="history-content"></div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="settings-panel hidden">
+      <div class="settings-content">
+        <h2>系统设置</h2>
+        <div class="setting-row">
+          <label>文字速度</label>
+          <input type="range" id="text-speed" min="1" max="5" value="3">
+        </div>
+        <div class="setting-row">
+          <label>自动播放</label>
+          <input type="checkbox" id="auto-play">
+        </div>
+        <div class="setting-row">
+          <label>自动速度</label>
+          <input type="range" id="auto-speed" min="1" max="10" value="5">
+        </div>
+        <button id="btn-close-settings" class="menu-btn">返回</button>
+      </div>
+    </div>
+
+    <!-- Save/Load Panel -->
+    <div id="save-panel" class="save-panel hidden">
+      <div class="save-content">
+        <h2 id="save-panel-title">保存进度</h2>
+        <div id="save-slots" class="save-slots"></div>
+        <button id="btn-close-save" class="menu-btn">返回</button>
+      </div>
+    </div>
+
+    <!-- Quick Menu -->
+    <div id="quick-menu" class="quick-menu">
+      <button id="btn-save" class="quick-btn">保存</button>
+      <button id="btn-load-game" class="quick-btn">读档</button>
+      <button id="btn-history" class="quick-btn">回顾</button>
+      <button id="btn-auto" class="quick-btn">自动</button>
+      <button id="btn-skip" class="quick-btn">快进</button>
+      <button id="btn-title" class="quick-btn">标题</button>
+    </div>
+  </div>
+
+  <!-- Ending Screen -->
+  <div id="ending-screen" class="screen">
+    <div class="ending-bg"></div>
+    <div class="ending-content">
+      <h1 id="ending-title" class="ending-title"></h1>
+      <p id="ending-subtitle" class="ending-subtitle"></p>
+      <button id="btn-restart" class="menu-btn">回到标题</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/engine.js"></script>
+<script src="js/script.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
