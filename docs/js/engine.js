@@ -51,7 +51,7 @@ class VNEngine {
     const el = document.getElementById('character-' + position);
     if (!el) return;
     el.className = 'character-sprite ' + position + ' active fade-in';
-    el.style.background = this.getCharacterArt(name, mood);
+    el.style.backgroundImage = this.getCharacterArt(name, mood);
   }
 
   hideCharacter(position) {
@@ -64,35 +64,17 @@ class VNEngine {
   }
 
   getCharacterArt(name, mood) {
-    // CSS-based abstract character portraits
-    const palette = {
-      'shen': { // 沈临渡 - cool tones, dark hair, pale
-        base: 'linear-gradient(180deg, rgba(60,70,100,0.15) 0%, rgba(40,50,80,0.1) 15%, rgba(180,190,210,0.12) 15%, rgba(180,190,210,0.12) 16%, rgba(200,200,215,0.35) 16%, rgba(200,200,215,0.35) 30%, rgba(50,55,70,0.25) 30%, rgba(50,55,70,0.25) 31%, rgba(200,195,210,0.4) 31%, rgba(200,195,210,0.4) 45%, rgba(60,65,80,0.3) 45%, rgba(60,65,80,0.3) 46%, rgba(210,205,220,0.38) 46%, rgba(210,205,220,0.38) 100%)',
-        shadow: '0 0 30px rgba(100,120,160,0.15)'
-      },
-      'lu': { // 陆砚 - warm scholarly tones
-        base: 'linear-gradient(180deg, rgba(80,70,60,0.15) 0%, rgba(60,55,50,0.1) 15%, rgba(190,180,170,0.1) 15%, rgba(190,180,170,0.1) 16%, rgba(215,205,195,0.35) 16%, rgba(215,205,195,0.35) 30%, rgba(70,65,55,0.25) 30%, rgba(70,65,55,0.25) 31%, rgba(220,210,200,0.4) 31%, rgba(220,210,200,0.4) 45%, rgba(80,75,65,0.3) 45%, rgba(80,75,65,0.3) 46%, rgba(225,215,205,0.38) 46%, rgba(225,215,205,0.38) 100%)',
-        shadow: '0 0 30px rgba(140,120,100,0.1)'
-      },
-      'pei_ting': { // 裴听 - gentle brown tones
-        base: 'linear-gradient(180deg, rgba(100,80,70,0.15) 0%, rgba(80,65,55,0.1) 15%, rgba(200,180,160,0.1) 15%, rgba(200,180,160,0.1) 16%, rgba(220,200,180,0.35) 16%, rgba(220,200,180,0.35) 30%, rgba(90,75,60,0.25) 30%, rgba(90,75,60,0.25) 31%, rgba(225,205,185,0.4) 31%, rgba(225,205,185,0.4) 45%, rgba(100,85,70,0.3) 45%, rgba(100,85,70,0.3) 46%, rgba(230,210,190,0.38) 46%, rgba(230,210,190,0.38) 100%)',
-        shadow: '0 0 25px rgba(160,130,100,0.1)'
-      },
-      'pei_yuan': { // 裴苑 - elegant, refined
-        base: 'linear-gradient(180deg, rgba(50,45,60,0.15) 0%, rgba(40,35,50,0.1) 15%, rgba(160,150,170,0.1) 15%, rgba(160,150,170,0.1) 16%, rgba(195,185,200,0.35) 16%, rgba(195,185,200,0.35) 30%, rgba(55,50,65,0.25) 30%, rgba(55,50,65,0.25) 31%, rgba(200,190,205,0.4) 31%, rgba(200,190,205,0.4) 45%, rgba(65,60,75,0.3) 45%, rgba(65,60,75,0.3) 46%, rgba(205,195,210,0.38) 46%, rgba(205,195,210,0.38) 100%)',
-        shadow: '0 0 30px rgba(130,120,150,0.12)'
-      },
-      'peihaisheng': { // 裴海生 - darker, more threatening
-        base: 'linear-gradient(180deg, rgba(40,35,45,0.2) 0%, rgba(30,25,35,0.15) 15%, rgba(140,130,145,0.15) 15%, rgba(140,130,145,0.15) 16%, rgba(170,160,175,0.35) 16%, rgba(170,160,175,0.35) 30%, rgba(45,40,50,0.3) 30%, rgba(45,40,50,0.3) 31%, rgba(175,165,180,0.4) 31%, rgba(175,165,180,0.4) 45%, rgba(55,50,60,0.35) 45%, rgba(55,50,60,0.35) 46%, rgba(180,170,185,0.38) 46%, rgba(180,170,185,0.38) 100%)',
-        shadow: '0 0 20px rgba(80,60,70,0.15)'
-      },
-      'song': { // 宋知远
-        base: 'linear-gradient(180deg, rgba(70,65,75,0.15) 0%, rgba(55,50,60,0.1) 15%, rgba(175,165,180,0.1) 15%, rgba(175,165,180,0.1) 16%, rgba(200,190,205,0.35) 16%, rgba(200,190,205,0.35) 30%, rgba(65,60,70,0.25) 30%, rgba(65,60,70,0.25) 31%, rgba(205,195,210,0.4) 31%, rgba(205,195,210,0.4) 45%, rgba(75,70,80,0.3) 45%, rgba(75,70,80,0.3) 46%, rgba(210,200,215,0.38) 46%, rgba(210,200,215,0.38) 100%)',
-        shadow: '0 0 25px rgba(130,120,140,0.1)'
-      }
+    // SVG character illustrations (CC0 — original art)
+    const base = 'assets/characters/';
+    const images = {
+      'shen': base + 'shen.svg',
+      'lu': base + 'lu.svg',
+      'pei_ting': base + 'pei_ting.svg',
+      'pei_yuan': base + 'pei_yuan.svg',
+      'peihaisheng': base + 'peihaisheng.svg',
+      'song': base + 'song.svg'
     };
-    const entry = palette[name] || palette['shen'];
-    return entry.base;
+    return 'url(' + (images[name] || images['shen']) + ')';
   }
 
   // === Rain Effect ===

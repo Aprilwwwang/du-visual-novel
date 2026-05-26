@@ -168,6 +168,9 @@ body {
 .character-sprite {
   position: absolute; bottom: 0; width: 300px; height: 70%;
   display: none; pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .character-sprite.left { left: 5%; }

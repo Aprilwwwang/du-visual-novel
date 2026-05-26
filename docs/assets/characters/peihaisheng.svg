@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <defs>
+    <linearGradient id="skin5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ede0d0"/>
+      <stop offset="100%" stop-color="#d8c8b0"/>
+    </linearGradient>
+    <linearGradient id="hair5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1518"/>
+      <stop offset="100%" stop-color="#0a0508"/>
+    </linearGradient>
+  </defs>
+  <!-- neck -->
+  <rect x="172" y="275" width="56" height="75" rx="10" fill="url(#skin5)"/>
+  <!-- shoulders (broad) -->
+  <path d="M40,375 Q100,335 165,345 L165,500 L40,500 Z" fill="#1a1520"/>
+  <path d="M360,375 Q300,335 235,345 L235,500 L360,500 Z" fill="#1a1520"/>
+  <!-- dark jacket collar -->
+  <path d="M145,345 L200,295 L255,345" fill="none" stroke="#2a2030" stroke-width="3"/>
+  <!-- face (angular, sharp) -->
+  <ellipse cx="200" cy="210" rx="80" ry="105" fill="url(#skin5)"/>
+  <path d="M120,210 Q145,305 200,315 Q255,305 280,210" fill="url(#skin5)"/>
+  <!-- more angular jaw -->
+  <path d="M120,210 Q118,260 200,315 Q282,260 280,210" fill="url(#skin5)" opacity="0.5"/>
+  <!-- hair (messy, dark, slightly wild) -->
+  <path d="M105,200 Q98,90 135,55 Q200,20 265,55 Q302,90 295,200 Q298,250 282,220 Q260,270 240,235 Q200,285 160,235 Q140,270 118,220 Q102,250 105,200 Z" fill="url(#hair5)"/>
+  <!-- bangs (spiky/messy) -->
+  <path d="M108,195 Q115,120 150,75 Q170,55 195,45 Q220,50 245,70 Q280,115 292,185 Q280,168 265,178 Q248,140 200,148 Q155,140 138,175 Q120,168 108,195 Z" fill="url(#hair5)"/>
+  <!-- spiky strands -->
+  <path d="M150,75 L145,40 L155,70" fill="url(#hair5)"/>
+  <path d="M200,45 L200,12 L210,48" fill="url(#hair5)"/>
+  <path d="M250,70 L260,38 L255,72" fill="url(#hair5)"/>
+  <!-- eyes (sharp, narrow, intense) -->
+  <ellipse cx="168" cy="222" rx="16" ry="7" fill="white"/>
+  <ellipse cx="232" cy="222" rx="16" ry="7" fill="white"/>
+  <ellipse cx="170" cy="222" rx="8" ry="7" fill="#3a2020"/>
+  <ellipse cx="234" cy="222" rx="8" ry="7" fill="#3a2020"/>
+  <ellipse cx="171" cy="221" rx="4" ry="4" fill="#0a0000"/>
+  <ellipse cx="235" cy="221" rx="4" ry="4" fill="#0a0000"/>
+  <!-- sharp eyebrows -->
+  <path d="M146,206 Q168,196 190,208" fill="none" stroke="#0a0508" stroke-width="3"/>
+  <path d="M210,208 Q232,196 254,206" fill="none" stroke="#0a0508" stroke-width="3"/>
+  <!-- angular nose -->
+  <path d="M198,228 L194,244 Q200,248 206,244" fill="none" stroke="#c0a888" stroke-width="1.8"/>
+  <!-- mouth (thin, smirk) -->
+  <path d="M210,265 Q220,262 228,265" fill="none" stroke="#9a7060" stroke-width="2"/>
+  <path d="M185,265 Q200,268 210,265" fill="none" stroke="#9a7060" stroke-width="1.5"/>
+  <!-- slight shadow under chin -->
+  <ellipse cx="200" cy="310" rx="40" ry="10" fill="#0a0000" opacity="0.08"/>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <defs>
+    <linearGradient id="skin4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#faf3ea"/>
+      <stop offset="100%" stop-color="#efe0cc"/>
+    </linearGradient>
+    <linearGradient id="hair4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a18"/>
+    </linearGradient>
+    <linearGradient id="dress" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a3550"/>
+      <stop offset="100%" stop-color="#2a2540"/>
+    </linearGradient>
+  </defs>
+  <!-- neck (elegant, long) -->
+  <rect x="180" y="265" width="40" height="65" rx="8" fill="url(#skin4)"/>
+  <!-- shoulders -->
+  <path d="M60,355 Q110,325 165,335 L165,500 L60,500 Z" fill="url(#dress)"/>
+  <path d="M340,355 Q290,325 235,335 L235,500 L340,500 Z" fill="url(#dress)"/>
+  <!-- elegant collar -->
+  <path d="M155,335 L200,290 L245,335" fill="none" stroke="#4a4560" stroke-width="1.5"/>
+  <!-- face (slightly more angular/elegant) -->
+  <ellipse cx="200" cy="198" rx="72" ry="95" fill="url(#skin4)"/>
+  <path d="M128,198 Q148,292 200,305 Q252,292 272,198" fill="url(#skin4)"/>
+  <!-- hair back (long, straight, dark) -->
+  <path d="M112,195 Q108,80 140,45 Q200,10 260,45 Q292,80 288,195 Q292,240 280,215 Q262,270 242,235 Q200,280 158,235 Q138,270 120,215 Q108,240 112,195 Z" fill="url(#hair4)"/>
+  <!-- long straight hair -->
+  <rect x="112" y="200" width="15" height="250" rx="5" fill="url(#hair4)"/>
+  <rect x="273" y="200" width="15" height="250" rx="5" fill="url(#hair4)"/>
+  <!-- bangs (neat, side-swept) -->
+  <path d="M114,190 Q120,110 155,65 Q180,40 210,35 Q240,38 265,60 Q288,100 286,180 Q270,165 255,172 Q238,135 200,140 Q162,135 145,172 Q130,165 114,190 Z" fill="url(#hair4)"/>
+  <!-- eyes (sharp, elegant) -->
+  <ellipse cx="168" cy="215" rx="14" ry="8" fill="white"/>
+  <ellipse cx="232" cy="215" rx="14" ry="8" fill="white"/>
+  <ellipse cx="170" cy="215" rx="7" ry="7" fill="#3a3050"/>
+  <ellipse cx="234" cy="215" rx="7" ry="7" fill="#3a3050"/>
+  <ellipse cx="171" cy="214" rx="3.5" ry="3.5" fill="#0a0518"/>
+  <ellipse cx="235" cy="214" rx="3.5" ry="3.5" fill="#0a0518"/>
+  <circle cx="166" cy="212" r="1.8" fill="white"/>
+  <circle cx="230" cy="212" r="1.8" fill="white"/>
+  <!-- eyelashes -->
+  <path d="M154,212 Q152,208 155,212" fill="none" stroke="#0a0518" stroke-width="1.5"/>
+  <path d="M246,212 Q248,208 245,212" fill="none" stroke="#0a0518" stroke-width="1.5"/>
+  <!-- eyebrows (sharp, elegant) -->
+  <path d="M146,198 Q168,190 185,200" fill="none" stroke="#0a0518" stroke-width="2"/>
+  <path d="M215,200 Q232,190 254,198" fill="none" stroke="#0a0518" stroke-width="2"/>
+  <!-- nose (delicate) -->
+  <path d="M198,222 L196,235 Q200,238 204,235" fill="none" stroke="#d8c0a0" stroke-width="1.2"/>
+  <!-- mouth (refined) -->
+  <path d="M188,250 Q200,256 212,250" fill="none" stroke="#b08868" stroke-width="1.5"/>
+  <!-- subtle earring -->
+  <circle cx="272" cy="235" r="3" fill="#c0a060" opacity="0.6"/>
+</svg>

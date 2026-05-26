@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a4058"/>
+      <stop offset="100%" stop-color="#1a1d2e"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5ede0"/>
+      <stop offset="100%" stop-color="#e8dcc8"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2d3a"/>
+      <stop offset="100%" stop-color="#1a1c28"/>
+    </linearGradient>
+    <linearGradient id="uniform" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a4058"/>
+      <stop offset="100%" stop-color="#2a3045"/>
+    </linearGradient>
+  </defs>
+  <!-- neck -->
+  <rect x="175" y="280" width="50" height="80" rx="10" fill="url(#skin)"/>
+  <!-- shoulders -->
+  <path d="M60,380 Q100,340 170,350 L170,500 L60,500 Z" fill="url(#uniform)"/>
+  <path d="M340,380 Q300,340 230,350 L230,500 L340,500 Z" fill="url(#uniform)"/>
+  <!-- collar -->
+  <path d="M170,350 L200,310 L230,350" fill="none" stroke="#4a5068" stroke-width="2"/>
+  <path d="M170,350 L200,380 L200,500" fill="none" stroke="#2a3045" stroke-width="1"/>
+  <!-- face -->
+  <ellipse cx="200" cy="210" rx="80" ry="105" fill="url(#skin)"/>
+  <!-- jaw -->
+  <path d="M120,210 Q140,300 200,315 Q260,300 280,210" fill="url(#skin)"/>
+  <!-- hair back -->
+  <path d="M100,200 Q100,100 140,60 Q200,30 260,60 Q300,100 300,200 Q300,250 280,230 Q260,270 240,240 Q200,280 160,240 Q140,270 120,230 Z" fill="url(#hair)"/>
+  <!-- hair bangs -->
+  <path d="M105,195 Q110,130 145,85 Q175,55 200,50 Q225,55 255,85 Q290,130 295,195 Q280,175 260,190 Q240,155 200,160 Q160,155 140,190 Q120,175 105,195 Z" fill="url(#hair)"/>
+  <!-- side hair strands -->
+  <path d="M100,200 Q95,250 100,290 Q105,270 108,240 Z" fill="url(#hair)"/>
+  <path d="M300,200 Q305,250 300,290 Q295,270 292,240 Z" fill="url(#hair)"/>
+  <!-- eyes -->
+  <ellipse cx="170" cy="220" rx="18" ry="10" fill="white"/>
+  <ellipse cx="230" cy="220" rx="18" ry="10" fill="white"/>
+  <ellipse cx="172" cy="220" rx="9" ry="8" fill="#5a6a80"/>
+  <ellipse cx="232" cy="220" rx="9" ry="8" fill="#5a6a80"/>
+  <ellipse cx="173" cy="219" rx="4" ry="4" fill="#1a1d2e"/>
+  <ellipse cx="233" cy="219" rx="4" ry="4" fill="#1a1d2e"/>
+  <circle cx="167" cy="217" r="2" fill="white"/>
+  <circle cx="227" cy="217" r="2" fill="white"/>
+  <!-- eyebrows -->
+  <path d="M148,200 Q170,193 192,202" fill="none" stroke="#2a2d3a" stroke-width="2.5"/>
+  <path d="M208,202 Q230,193 252,200" fill="none" stroke="#2a2d3a" stroke-width="2.5"/>
+  <!-- nose -->
+  <path d="M198,225 L195,240 Q200,243 205,240" fill="none" stroke="#d4c8b0" stroke-width="1.5"/>
+  <!-- mouth -->
+  <path d="M185,260 Q200,268 215,260" fill="none" stroke="#c0a888" stroke-width="1.8"/>
+  <!-- blazer lapel -->
+  <path d="M170,350 L195,380 L200,450 L175,440 Z" fill="#2a3045" opacity="0.5"/>
+  <path d="M230,350 L205,380 L200,450 L225,440 Z" fill="#2a3045" opacity="0.5"/>
+</svg>
