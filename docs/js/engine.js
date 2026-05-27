@@ -67,14 +67,15 @@ class VNEngine {
     // SVG character illustrations (CC0 — original art)
     const base = 'assets/characters/';
     const images = {
-      'shen': base + 'shen.svg',
-      'lu': base + 'lu.svg',
-      'pei_ting': base + 'pei_ting.svg',
-      'pei_yuan': base + 'pei_yuan.svg',
-      'peihaisheng': base + 'peihaisheng.svg',
-      'song': base + 'song.svg'
+      'ma_zhaolong': base + 'ma_zhaolong.svg',
+      'ma_zhaolong_adult': base + 'ma_zhaolong_adult.svg',
+      'xu_nuo': base + 'xu_nuo.svg',
+      'miao_junlin': base + 'miao_junlin.svg',
+      'xu_yuan': base + 'xu_yuan.svg',
+      'mei_jie': base + 'mei_jie.svg',
+      'wang_xichen': base + 'wang_xichen.svg'
     };
-    return 'url(' + (images[name] || images['shen']) + ')';
+    return 'url(' + (images[name] || images['ma_zhaolong']) + ')';
   }
 
   // === Rain Effect ===
@@ -231,7 +232,11 @@ class VNEngine {
           }
           // Track route for display
           if (ch.flag === 'route') {
-            const routeNames = { 'pei_ting': '裴听路线 · 笔记本的传递', 'lu_yan': '自渡路线 · 河堤', 'pei_yuan': '裴苑路线 · 律师名片' };
+            const routeNames = {
+              'miao_junlin': '缪钧琳路线 · 笔记本的春天',
+              'self_rescue': '自渡路线 · 河堤',
+              'xu_yuan': '许苑路线 · 律师名片'
+            };
             this.routeName = routeNames[ch.value] || '';
             const indicator = document.getElementById('route-indicator');
             if (indicator) indicator.textContent = '◆ ' + this.routeName;

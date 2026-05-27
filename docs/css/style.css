@@ -118,6 +118,8 @@ body {
 .scene-bg {
   position: absolute; inset: 0; transition: background 1.2s ease;
   background: linear-gradient(170deg, #0a0a1a, #151028, #0d1525);
+  background-size: cover;
+  background-position: center;
 }
 .scene-overlay {
   position: absolute; inset: 0; pointer-events: none;
@@ -163,6 +165,21 @@ body {
 }
 .scene-bg.black { background: #000; }
 .scene-bg.white { background: #f5f0e8; }
+.scene-bg.classroom_forum { background-image: linear-gradient(rgba(8,10,18,.22), rgba(8,10,18,.42)), url("../assets/backgrounds/classroom_forum.svg"); }
+.scene-bg.chinese_class { background-image: linear-gradient(rgba(8,10,18,.16), rgba(8,10,18,.36)), url("../assets/backgrounds/chinese_class.svg"); }
+.scene-bg.rooftop { background-image: linear-gradient(rgba(8,10,18,.1), rgba(8,10,18,.42)), url("../assets/backgrounds/rooftop.svg"); }
+.scene-bg.physics_notes { background-image: linear-gradient(rgba(8,10,18,.08), rgba(8,10,18,.24)), url("../assets/backgrounds/physics_notes.svg"); }
+.scene-bg.lawyer_card { background-image: linear-gradient(rgba(8,10,18,.1), rgba(8,10,18,.3)), url("../assets/backgrounds/lawyer_card.svg"); }
+.scene-bg.riverbank_milk { background-image: linear-gradient(rgba(8,10,18,.05), rgba(8,10,18,.34)), url("../assets/backgrounds/riverbank_milk.svg"); }
+.scene-bg.teacher_room { background-image: linear-gradient(rgba(8,10,18,.08), rgba(8,10,18,.35)), url("../assets/backgrounds/teacher_room.svg"); }
+.scene-bg.trash_night { background-image: linear-gradient(rgba(8,10,18,.05), rgba(8,10,18,.32)), url("../assets/backgrounds/trash_night.svg"); }
+.scene-bg.bad_room { background-image: linear-gradient(rgba(8,10,18,.12), rgba(8,10,18,.42)), url("../assets/backgrounds/bad_room.svg"); }
+.scene-bg.last_class { background-image: linear-gradient(rgba(8,10,18,.08), rgba(8,10,18,.26)), url("../assets/backgrounds/last_class.svg"); }
+.scene-bg.true_end { background-image: linear-gradient(rgba(255,255,255,.1), rgba(8,10,18,.18)), url("../assets/backgrounds/true_end.svg"); }
+.scene-bg.notebook_spring { background-image: linear-gradient(rgba(255,255,255,.04), rgba(8,10,18,.18)), url("../assets/backgrounds/notebook_spring.svg"); }
+.scene-bg.summer_window { background-image: linear-gradient(rgba(255,255,255,.05), rgba(8,10,18,.12)), url("../assets/backgrounds/summer_window.svg"); }
+.scene-bg.train_station { background-image: linear-gradient(rgba(8,10,18,.08), rgba(8,10,18,.34)), url("../assets/backgrounds/train_station.svg"); }
+.scene-bg.home_kitchen { background-image: linear-gradient(rgba(8,10,18,.08), rgba(8,10,18,.32)), url("../assets/backgrounds/home_kitchen.svg"); }
 
 /* Character sprites - stylized silhouettes with colors */
 .character-sprite {

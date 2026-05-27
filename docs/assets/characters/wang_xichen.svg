@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 560">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#efe0cf"/><stop offset="1" stop-color="#d5bda5"/></linearGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2e2f34"/><stop offset="1" stop-color="#15161a"/></linearGradient>
+  </defs>
+  <path d="M55 560v-125c0-47 64-79 145-79s145 32 145 79v125z" fill="#2d3038"/>
+  <path d="M154 370l46 58 46-58" fill="none" stroke="#8d949e" stroke-width="5"/>
+  <rect x="176" y="304" width="48" height="76" rx="16" fill="url(#skin)"/>
+  <ellipse cx="200" cy="222" rx="78" ry="102" fill="url(#skin)"/>
+  <path d="M108 207c-7-83 36-140 92-143 63-3 101 50 93 143-30-38-62-55-100-55-35 0-64 18-85 55z" fill="url(#hair)"/>
+  <path d="M140 218q26-12 52 0M208 218q26-12 52 0" fill="none" stroke="#303138" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="169" cy="240" rx="8" ry="9" fill="#333d48"/>
+  <ellipse cx="232" cy="240" rx="8" ry="9" fill="#333d48"/>
+  <path d="M181 292q19 4 38 0" fill="none" stroke="#927064" stroke-width="3" stroke-linecap="round"/>
+</svg>
