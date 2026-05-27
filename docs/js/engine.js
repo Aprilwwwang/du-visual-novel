@@ -64,16 +64,16 @@ class VNEngine {
   }
 
   getCharacterArt(name, mood) {
-    // SVG character illustrations (CC0 — original art)
-    const base = 'assets/characters/';
+    // PNG character illustrations.
+    const base = 'assets/images/characters/';
     const images = {
-      'ma_zhaolong': base + 'ma_zhaolong.svg',
-      'ma_zhaolong_adult': base + 'ma_zhaolong_adult.svg',
-      'xu_nuo': base + 'xu_nuo.svg',
-      'miao_junlin': base + 'miao_junlin.svg',
-      'xu_yuan': base + 'xu_yuan.svg',
-      'mei_jie': base + 'mei_jie.svg',
-      'wang_xichen': base + 'wang_xichen.svg'
+      'ma_zhaolong': base + 'ma_zhaolong.png',
+      'ma_zhaolong_adult': base + 'ma_zhaolong_adult.png',
+      'xu_nuo': base + 'xu_nuo.png',
+      'miao_junlin': base + 'miao_junlin.png',
+      'xu_yuan': base + 'xu_yuan.png',
+      'mei_jie': base + 'mei_jie.png',
+      'wang_xichen': base + 'wang_xichen.png'
     };
     return 'url(' + (images[name] || images['ma_zhaolong']) + ')';
   }
